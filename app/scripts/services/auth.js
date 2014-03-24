@@ -19,4 +19,4 @@ app.factory( 'Auth',
       return Auth.signedIn();
     };
     return Auth;
-  };
+  });
