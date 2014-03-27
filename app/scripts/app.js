@@ -24,6 +24,10 @@ app.config(function ($routeProvider) {
         templateUrl: 'views/showpost.html',
         controller: 'PostViewCtrl'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'AuthCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
