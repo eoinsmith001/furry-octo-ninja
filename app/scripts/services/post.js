@@ -32,6 +32,16 @@ app.factory( 'Post',
         }
         return posts.$remove(postId);
       },
+      addComment : function( postId, comment ) {
+        if (User.signedIn()) {
+          var user = User.getCurrent();
+          comment.username = user.username;
+          comment.postId = postId;
+          posts.$child(postId).$child('comments').$add(comment).then(function(ref){
+            user.$child('comments').$child(ref.name()).$set({id: ref.name(), postId: postId});
+          });
+        }
+      }
     };
     return Post;
   });
